@@ -1,0 +1,6 @@
+Aplikasi Javascript api
+link : https://www.youtube.com/watch?v=KWTyC1WKdFw&t=857s
+
+Progres
+- 23 November : 0 - 46.00 (asset-header : - minus header menumpuk navbar) 
+- 24 November : 46 ( )
