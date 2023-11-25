@@ -4,4 +4,4 @@ link : https://youtu.be/KWTyC1WKdFw?si=FPaOlEtwc7-pfI-R
 Progres
 - 23 November : 0 - 46.00 (asset,header : - minus header menumpuk navbar) 
 - 24 November : 46 - 1.18.47 (navbae : -gagal search bar)
-- 25 Nove,ber : 1.18.47 - 1.46.20 (tab bawah)
+- 25 November : 1.18.47 - 1.53.46 (slider)
