@@ -31,5 +31,15 @@ let /**Node Element */ [$lastActiveTabPanel] = $tabPanels;
 let /**Node Element */ [$lastActiveTabBtn] = $tabBtns;
 
 addeventOnElements($tabBtns, "click", function () {
-    $lastActiveTabPanel.setAttribute("hidden", "")
+    $lastActiveTabPanel.setAttribute("hidden", "");
+    $lastActiveTabBtn.setAttribute("aria-selected", false);
+    $lastActiveTabBtn.setAttribute("tabindex", -1);
+
+    const /**Node Element */ $currentTabPanel = document.querySelector(`#${this.getAttribute("aria-controls")}`);
+    $currentTabPanel.removeAttribute("hidden");
+    this.setAttribute("aria-selected", true);
+    this.setAttribute("tabindex", 0);
+
+    $lastActiveTabPanel = $currentTabPanel;
+    $lastActiveTabBtn = this;
 })
