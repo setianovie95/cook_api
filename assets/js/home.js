@@ -24,13 +24,13 @@ $searchField.addEventListener("keydown", e => {
 
 /**Tab panel navigation */
 
-const /**Node List */ $tabBtns = document.querySelectorAll("[data-tab-btn]");
-const /**Node List */ $tabPanels = document.querySelectorAll("[data-tab-panel]");
+const /** Node List */ $tabBtns = document.querySelectorAll("[data-tab-btn]");
+const /** Node List */ $tabPanels = document.querySelectorAll("[data-tab-panel]");
 
-let /**Node Element */ [$lastActiveTabPanel] = $tabPanels;
-let /**Node Element */ [$lastActiveTabBtn] = $tabBtns;
+let /** Node Element */[$lastActiveTabPanel] = $tabPanels;
+let /** Node Element */[$lastActiveTabBtn] = $tabBtns; 
 
-addeventOnElements($tabBtns, "click", function () {
+addEventOnElements($tabBtns, "click", function () {
     $lastActiveTabPanel.setAttribute("hidden", "");
     $lastActiveTabBtn.setAttribute("aria-selected", false);
     $lastActiveTabBtn.setAttribute("tabindex", -1);
