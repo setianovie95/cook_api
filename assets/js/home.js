@@ -107,41 +107,44 @@ const addTabContent = ($currentTabBtn, $currentTabPanel) => {
 
             } = data.hits[i];
 
+            const /**String */ recipeId = uri.slice(uri.lastIndexOf("_") + 1);
+
+
             const /**Node Elemet */ $card = document.createElement("div");
             $card.classList.add("card");
             $card.style.animationDelay = `${100 * i}ms`;
 
             $card.innerHTML = `
-                                <figure class="card-media img-holder">
-                                    <img src="${image}" width="195" height="195" loading="lazy"
-                                        alt="${title}" class="img-cover">
-                                </figure>
+                <figure class="card-media img-holder">
+                    <img src="${image}" width="195" height="195" loading="lazy"
+                        alt="${title}" class="img-cover">
+                </figure>
 
-                                <div class="card-body">
+                <div class="card-body">
 
-                                    <h3 class="title-small">
-                                        <a href="./detail.html" class="card-link">${title ?? "Untitled"}</a>
-                                    </h3>
+                    <h3 class="title-small">
+                        <a href="./detail.html?recipe=${recipeId}" class="card-link">${title ?? "Untitled"}</a>
+                    </h3>
 
-                                    <div class="meta-wrapper">
+                    <div class="meta-wrapper">
 
-                                        <div class="meta-item">
-                                            <span class="material-symbols-outlined" aria-hidden="true">schedule</span>
+                        <div class="meta-item">
+                            <span class="material-symbols-outlined" aria-hidden="true">schedule</span>
 
-                                            <span class="label-medium">${getTime(cookingTime).time || "<1"} ${getTime(cookingTime).timeUnit}</span>
-                                        </div>
+                            <span class="label-medium">${getTime(cookingTime).time || "<1"} ${getTime(cookingTime).timeUnit}</span>
+                        </div>
 
-                                        <button class="icon-btn has-state removed" aria-label="Add to saved recipes">
-                                            <span class="material-symbols-outlined bookmark-add"
+                        <button class="icon-btn has-state removed" aria-label="Add to saved recipes">
+                            <span class="material-symbols-outlined bookmark-add"
                                                 aria-hidden="true">bookmark_add</span>
 
-                                            <span class="material-symbols-outlined bookmark"
-                                                aria-hidden="true">bookmark</span>
-                                        </button>
+                            <span class="material-symbols-outlined bookmark"
+                                aria-hidden="true">bookmark</span>
+                        </button>
 
-                                    </div>
+                    </div>
 
-                                </div>
+                </div>
             `;
 
             $gridList.appendChild($card);

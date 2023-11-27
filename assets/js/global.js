@@ -6,6 +6,8 @@
 
 "use strict";
 
+import { fetchData } from "./api";
+
 /**Add Event on multiple element
  * 
  * @param {NodeList} $elements Nodelist
@@ -47,3 +49,14 @@ export const /**String */ $skeletonCard = `
 
     </div>
 `;
+
+const /**Steing */ ROOT = "https://api.edamam.com/api/recipes/v2";
+
+window.saveRecipe = function (element, recipeId) {
+    const /**String */ isSaved = window.localStorage.getItem(`cookio-recipe${recipeId}`);
+    ACCESS_POINT = `${ROOT}/${recipeId}`;
+
+    if (!isSaved) {
+        fetchData
+    }
+}
