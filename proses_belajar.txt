@@ -1,5 +1,6 @@
 Aplikasi Javascript api
 link : https://youtu.be/KWTyC1WKdFw?si=FPaOlEtwc7-pfI-R
+api : https://developer.edamam.com/edamam-recipe-api 
 
 Progres
 - 23 November : 0 - 46.00 (asset,header : - minus header menumpuk navbar) 
