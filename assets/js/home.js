@@ -173,9 +173,10 @@ for (const [index, $sliderSection] of $sliderSections.entries()) {
     $sliderSection.innerHTML = `
         <div class="container">
             <h2 class="section-title headline-small" id="slider-label-1">Latest ${cuisineType[index]} Recipes</h2>
+
             <div class="slider">
                 <ul class="slider-wrapper" data-slider-wrapper>
-                    ${`<li class="slider-item">${$skeletonCard}</li>"`.repeat(10)}
+                    ${`<li class="slider-item">${$skeletonCard}</li>`.repeat(10)}
                 </ul>
             </div>
         </div>
@@ -202,6 +203,7 @@ for (const [index, $sliderSection] of $sliderSections.entries()) {
             const /**Undefined */ isSaved = window.localStorage.getItem(`cookio-recipe${recipeId}`);
 
             const /**Node Element */ $sliderItem = document.createElement("li");
+            $sliderItem.classList.add("slider-item");
             $sliderItem.innerHTML = `
 
             <div class="card">
