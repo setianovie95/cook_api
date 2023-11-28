@@ -8,4 +8,4 @@ Progres
 - 25 November : 1.18.47 - 1.53.46 (slider)
 - 26 November : 1.53.46 - 2.04.38 (tags)
 - 27 November : 2.04.38 - 2.36.11 (footer, setting API)
-- 28 November : 2.36.11 - 2.49.50  (bookmark add, slider)
+- 28 November : 2.36.11 - 2.54.49  (bookmark add, slider, add bookmark)
