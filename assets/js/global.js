@@ -6,7 +6,7 @@
 
 "use strict";
 
-import { fetchData } from "./api";
+import { fetchData } from "./api.js";
 
 /**Add Event on multiple element
  * 
@@ -57,6 +57,15 @@ window.saveRecipe = function (element, recipeId) {
     ACCESS_POINT = `${ROOT}/${recipeId}`;
 
     if (!isSaved) {
-        fetchData
+        fetchData(cardQueries, function (data) {
+            window.localStorage.setItem(`cookio-recipe${recipeId}`, JSON.stringify(data));
+            element.classList.toggle("saved");
+            element.classList.toggle("removed");
+        });
+        ACCESS_POINT = ROOT;
+    } else {
+        window.localStorage.removeItem(`cookio-recipe${recipeId}`);
+        element.classList.toggle("saved");
+        element.classList.toggle("removed");
     }
 }
