@@ -9,3 +9,4 @@ Progres
 - 26 November : 1.53.46 - 2.04.38 (tags)
 - 27 November : 2.04.38 - 2.36.11 (footer, setting API)
 - 28 November : 2.36.11 - 2.54.49  (bookmark add, slider, add bookmark)
+- 29 November : 2.54.49 - (add and remove bookmark)
