@@ -10,3 +10,4 @@ Progres
 - 27 November : 2.04.38 - 2.36.11 (footer, setting API)
 - 28 November : 2.36.11 - 2.54.49  (bookmark add, slider, add bookmark)
 - 29 November : 2.54.49 - 3.04.49 (add and remove bookmark)
+- 30 November : 3.04.49 - (cook duration)
