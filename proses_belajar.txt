@@ -11,4 +11,4 @@ Progres
 - 28 November : 2.36.11 - 2.54.49  (bookmark add, slider, add bookmark)
 - 29 November : 2.54.49 - 3.04.49 (add and remove bookmark)
 - 30 November : 3.04.49 - 3.45.44 (filter)
-- 1 Desember : 3.45.44 - 4.15.10 (filter js, pencarian filter)
+- 1 Desember : 3.45.44 - 4.27.44 (filter js, pencarian filter)
