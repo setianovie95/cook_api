@@ -32,5 +32,18 @@ const initAccordion = function ($element) {
     });
 }
 
-
 for (const $accordion of $accordions) initAccordion($accordion);
+
+/**Filter bar toggle */
+
+const /**Node Element */ $filterBar = document.querySelector("[data-filter-bar]");
+const /**Node List */ $filterTogglers = document.querySelectorAll("[data-filter-toggler]");
+const /**Node Element */ $overlay = document.querySelector("[data-overlay]");
+
+addEventOnElements($filterTogglers, "click", function () {
+    $filterBar.classList.toggle("active");
+    $overlay.classList.toggle("active");
+    const bodyOverflow = document.body.style.overflow;
+    document.body.style.overflow = bodyOverflow == "hidden" ? "visible" : "hidden";
+});
+
