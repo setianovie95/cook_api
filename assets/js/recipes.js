@@ -47,3 +47,26 @@ addEventOnElements($filterTogglers, "click", function () {
     document.body.style.overflow = bodyOverflow == "hidden" ? "visible" : "hidden";
 });
 
+/**Filter Submit and Clear */
+
+const /**Node Element */ $filterSubmit = document.querySelector("[data-filter-submit]");
+const /**Node Element */ $filterClear = document.querySelector("[data-filter-clear]");
+const /**Node Element */ $filterSearch = $filterBar.querySelector("input[type='search']");
+
+$filterSubmit.addEventListener("click", function () {
+    const /**Node List */ $filterCheckboxes = $filterBar.querySelectorAll("input:checked");
+
+    const /**Array */ queries = [];
+
+    if ($filterSearch.value) queries.push(["q", $filterSearch.value]);
+
+    if ($filterCheckboxes.length) {
+        for (const $checkbox of $filterCheckboxes) {
+            const /**String */ key = $checkbox.parentElement.parentElement.dataset.filter;
+            queries.push([key, $checkbox.value]);
+        }
+    }
+
+    window.location = queries.length ? `?${queries.join("&").replace(/,/g, "=")}` : "/recipes.html";
+});
+
