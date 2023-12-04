@@ -108,9 +108,9 @@ window.addEventListener("scroll", e => {
     $filterBtn.classList[window.scrollY >= 120 ? "add" : "remove"]("active");
 });
 
-/**Request Recipes */
+/**Request Recipes and render*/
 
-const /**Node Element */ $grisList = document.querySelector("[data-grid-list]");
+const /**Node Element */ $gridList = document.querySelector("[data-grid-list]");
 const /**Node Element */ $loadMore = document.querySelector("[data-load-more]");
 const /**Aray */ defaultQueries = [
     ["mealType", "breakfast"],
@@ -118,10 +118,11 @@ const /**Aray */ defaultQueries = [
     ["mealType", "lunch"],
     ["mealType", "snack"],
     ["mealType", "teatime"],
-    ...cardQueries 
+    ...cardQueries
 ];
 
-$grisList.innerHTML = $skeletonCard.repeat(20); 
+$gridList.innerHTML = $skeletonCard.repeat(20);
+let /**String */ nextPageUrl = "";
 
 const renderRecipe = data => {
 
@@ -129,11 +130,96 @@ const renderRecipe = data => {
 
         const {
             recipe: {
-                image, 
-                label: title, 
-                totalTime: cookingTime, 
+                image,
+                label: title,
+                totalTime: cookingTime,
                 uri
             }
         } = item;
+
+        const /**String */ recipeId = uri.slice(uri.lastIndexOf("_") + 1);
+        const /**Undefined || String */ isSaved = window.localStorage.getItem(`cookio-recipe${recipeId}`);
+
+        const /**Node Element */ $card = document.createElement("div");
+        $card.classList.add("card");
+        $card.style.animationDelay = `${100 * index}ms`;
+
+        $card.innerHTML = `
+        <figure class="card-media img-holder">
+            <img src="${image}" width="195" height="195" loading="lazy"
+                alt="${title}" class="img-cover">
+        </figure>
+
+        <div class="card-body">
+
+            <h3 class="title-small">
+                <a href="./detail.html?recipe=${recipeId}" class="card-link">${title ?? "Untitled"}</a>
+            </h3>
+
+            <div class="meta-wrapper">
+
+                <div class="meta-item">
+                    <span class="material-symbols-outlined" aria-hidden="true">schedule</span>
+
+                    <span class="label-medium">${getTime(cookingTime).time || "<1"} ${getTime(cookingTime).timeUnit}</span>
+                </div>
+
+                <button class="icon-btn has-state ${isSaved ? "saved" : "removed"}" aria-label="Add to saved recipes" onclick="saveRecipe(this, '${recipeId}')">
+                    <span class="material-symbols-outlined bookmark-add"
+                                        aria-hidden="true">bookmark_add</span>
+
+                    <span class="material-symbols-outlined bookmark"
+                        aria-hidden="true">bookmark</span>
+                </button>
+
+            </div>
+
+        </div>
+            
+        `;
+
+        $gridList.appendChild($card);
+
     });
 }
+
+let /** Boolean */ reqeustedBefore = true;
+
+fetchData(queries || defaultQueries, data => {
+
+    const { _links: { next } } = data;
+    nextPageUrl = next?.href;
+
+    $gridList.innerHTML = "";
+    reqeustedBefore = false;
+
+    if (data.hits.length) {
+        renderRecipe(data);
+    } else {
+        $loadMore.innerHTML = `<p class="body-medium info-text">No recipe found</p>`;
+    }
+});
+
+const /**Number */ CONTAINER_MAX_WIDTH = 1200;
+const /**Number */ CONTAINER_MAX_CARD = 6;
+
+window.addEventListener("scroll", async e => {
+
+    if ($loadMore.getBoundingClientRect().top < window.innerHeight && !reqeustedBefore && nextPageUrl) {
+
+        $loadMore.innerHTML = $skeletonCard.repeat(Math.round(($loadMore.clientWidth / (CONTAINER_MAX_WIDTH)) * CONTAINER_MAX_CARD));
+        reqeustedBefore = true;
+
+        const /**Promise */ response = await fetch(nextPageUrl);
+        const /**Object */ data = await response.json();
+
+        const { _link: { next } } = data;
+        nextPageUrl = next?.href;
+
+        renderRecipe(data);
+        $loadMore.innerHTML = "";
+        reqeustedBefore = false;
+    }
+
+    if (!nextPageUrl) $loadMore.innerHTML = `<p class="body-medium info-text">No more recipes</p>`;
+});
