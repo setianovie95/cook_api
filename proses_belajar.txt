@@ -4,7 +4,7 @@ api : https://developer.edamam.com/edamam-recipe-api
 
 Progres
 - 23 November : 0 - 46.00 (asset,header : - minus header menumpuk navbar) 
-- 24 November : 46 - 1.18.47 (navbae : -gagal search bar)
+- 24 November : 46 - 1.18.47 (navbar)
 - 25 November : 1.18.47 - 1.53.46 (slider)
 - 26 November : 1.53.46 - 2.04.38 (tags)
 - 27 November : 2.04.38 - 2.36.11 (footer, setting API)
@@ -13,3 +13,4 @@ Progres
 - 30 November : 3.04.49 - 3.45.44 (filter)
 - 1 Desember : 3.45.44 - 4.27.44 (filter js, pencarian filter)
 - 4 Desember : 4.27.44 - 5.08.43 (tidak bisa load lebih dari 20 - 4.37.57, detail recipes)
+- 5 Desember : 5.08.43 - 5.49.06 (detail resep)
