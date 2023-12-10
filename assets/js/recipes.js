@@ -213,7 +213,7 @@ window.addEventListener("scroll", async e => {
         const /**Promise */ response = await fetch(nextPageUrl);
         const /**Object */ data = await response.json();
 
-        const { _link: { next } } = data;
+        const { _links: { next } } = data;
         nextPageUrl = next?.href;
 
         renderRecipe(data);
